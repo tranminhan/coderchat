@@ -1,0 +1,11 @@
+<div class="container">
+  <h2>Please Sign up</h2>
+  <div class="form-signin">
+    <%= simple_form_for @user do |f| %>
+      <%= f.input :email, label: false, placeholder: 'user@domain.com', class: 'form-control' %>
+      <%= f.input :username, label: false, placeholder: 'Username', error: 'Username is mandatory, please specify one', class: 'form-control' %>
+      <%= f.input :password, label: false, placeholder: 'Password', class: 'form-control' %>
+      <%= f.submit 'Sign up', class: 'btn btn-lg btn-primary btn-block btn-danger' %>
+    <% end %>
+  </div> <!-- /container -->
+</div> <!-- /container -->
