@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
-  
-  resources :users, only: [:new, :create]
+  resources :users, only: [:new, :create, :index, :show]
+  resources :sessions, only: [:new, :create]
 
   get 'homes/show'
+  get 'signup' => 'users#new'
+  get 'login' => 'sessions#new'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

@@ -1,10 +1,22 @@
 <div class="container">
   <h2>Please Sign up</h2>
+
+  <% if @user.errors.any? %>
+    <div id="error_explanation">
+      Please review following <%= pluralize(@user.errors.count, "error") %>.
+      <ul>
+      <% @user.errors.full_messages.each do |m| %>
+        <li><%= m %></li>
+      <% end %>
+    </ul>
+    </div>
+  <% end %>
+
   <div class="form-signin">
     <%= simple_form_for @user do |f| %>
-      <%= f.input :email, label: false, placeholder: 'user@domain.com', class: 'form-control' %>
-      <%= f.input :username, label: false, placeholder: 'Username', error: 'Username is mandatory, please specify one', class: 'form-control' %>
-      <%= f.input :password, label: false, placeholder: 'Password', class: 'form-control' %>
+      <%= f.input :email, label: false, placeholder: 'user@domain.com', error: false %>
+      <%= f.input :username, label: false, placeholder: 'Username', error: false  %>
+      <%= f.input :password, label: false, placeholder: 'Password', error: false  %>
       <%= f.submit 'Sign up', class: 'btn btn-lg btn-primary btn-block btn-danger' %>
     <% end %>
   </div> <!-- /container -->
