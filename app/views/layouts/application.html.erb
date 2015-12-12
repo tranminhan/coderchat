@@ -6,38 +6,35 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
+
 <body>
+  
+<nav class="navbar navbar-fixed-top navbar-dark bg-inverse">
+<a class="navbar-brand" href="#">Coder Chat</a>
+<ul class="nav navbar-nav pull-right">
+  <% if !logged_in? %>
+  <li class="nav-item">
+    <a class="nav-link" href="#">Sign up</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#">Log in</a>
+  </li>
+  <% else %>
+  <li class="nav-item">
+    <a class="nav-link" href="/logout">Log out</a>
+  </li>
+  <% end %>
+</ul>
+</nav>
 
-  <div class="site-wrapper">
-    <div class="site-wrapper-inner">
-      <div class="cover-container">
-        <div class="masthead clearfix">
-          <div class="inner">
-            <h3 class="masthead-brand">
-              <a href="/">CoderChat</a>
-            </h3>
-            <nav>
-              <ul class="nav masthead-nav">
-                <li class="active"><a href="#">Home</a></li>
-                <li><a href="#">Features</a></li>
-                <li><a href="#">Contact</a></li>
-              </ul>
-            </nav>
-          </div>
-        </div>
+<div class="container">
 
-        <%= flash_messages %>
-        <%= yield %>
+<div class="starter-template">
+  <%= yield %>
+</div>
 
-        <div class="mastfoot">
-          <div class="inner">
-            <p>Cover template for <a href="http://getbootstrap.com">Bootstrap</a>, by <a href="https://twitter.com/mdo">@mdo</a>.</p>
-          </div>
-        </div>
+</div><!-- /.container -->
 
-      </div>
-    </div>
-  </div>
 
 </body>
 </html>
