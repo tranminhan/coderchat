@@ -42,10 +42,9 @@
         </form>
       </div>
       <div class="col-md-4">
-        <h3>All friends</h3>
-        <!-- <%current_user.reload.friends.count %> -->
-        <% current_user.friends do |f| %>
-          <%= f.username %>
+        <h3>Your friends</h3>
+        <% current_user.friends.each do |friend| %>
+          <a><%= friend.username %></a> | 
         <% end %>
       </div>
     </div>
@@ -61,14 +60,22 @@
         </form>
       </div>
       <div class="col-md-4">
+        <h3>Your friends</h3>
+        <% current_user.friends.each do |friend| %>
+          <a><%= friend.username %></a> | 
+        <% end %>
+      </div>
+      <div class="col-md-4">
         <h3>All users</h3>
         <% User.all.each do |u| %>
-          <div class="width: auto">
-            <%= form_tag friendships_path, method: "post", class: 'form-inline' do %>
-              <input type="hidden" name="id" value="<%= u.id %>">
-              <button type="submit" class="btn btn-link"><%= u.username %></button>
-            <% end %>
-          </div>
+          <% if !current_user.friends.include?(u) && current_user != u %>
+            <div class="width: auto">
+              <%= form_tag friendships_path, method: "post", class: 'form-inline' do %>
+                <input type="hidden" name="id" value="<%= u.id %>">
+                <button type="submit" class="btn btn-link"><%= u.username %></button>
+              <% end %>
+            </div>
+          <% end %>
         <% end %>
       </div>
     </div>
