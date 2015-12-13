@@ -1,12 +1,12 @@
-# Homework 2 - *Name of App*
+# Homework 2 - *CoderApp*
 
 **Coderchat** is a Ruby on Rails application that allows users to send messages to each other that can only be read once.
 
 Submitted by: **An Tran**
 
-Time spent: **X** hours
+Time spent: **14** hours
 
-URL: **Insert your Heroku URL here**
+URL: **https://glacial-peak-5614.herokuapp.com**
 
 ## User Stories
 
@@ -44,7 +44,7 @@ The following **additional** features are implemented:
 
 Here's a walkthrough of implemented user stories:
 
-![Video Walkthrough](http://i.imgur.com/link/to/your/gif/file.gif)
+![Video Walkthrough](http://i.imgur.com/XafLJac.gifv)
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
