@@ -79,8 +79,16 @@
     </div>
   </div>
   <div class="tab-pane" id="settings" role="tabpanel">
-    <% current_user.messages.each do |message| %>
-        <p class="lead"><%= message.body %></p>
+    <% current_user.sent_messages.each do |message| %>
+        <p class="lead"><%= "A message sent at " %>
+        <span style="font-size: 10px"><%= "#{pretty_time(message.created_at)}" %></span>
+        <% if !message.read %>
+          <span>unread...</span>
+        <% else %>
+          <span>was read at </span>
+          <span style="font-size: 10px"><%= "#{pretty_time(message.read_at)}" %></span>
+        <% end %>
+        </p>
     <% end %>
   </div>
 </div>

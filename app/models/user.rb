@@ -8,6 +8,7 @@ class User < ActiveRecord::Base
   validates :password, presence: true, length: { minimum: 6 }
 
   has_many :messages, -> { order(created_at: :desc) }
+  has_many :sent_messages, class_name: 'Message', foreign_key: 'sender_id', dependent: :destroy
   has_many :friendships, class_name: 'Friendship', foreign_key: 'me_id', dependent: :destroy
 
   has_many :friends, through: :friendships, source: :friend
