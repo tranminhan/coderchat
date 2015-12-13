@@ -10,7 +10,15 @@
 <body>
   
 <nav class="navbar navbar-fixed-top navbar-dark bg-inverse">
-<a class="navbar-brand" href="#">Coder Chat</a>
+<a class="navbar-brand" href="/">Coder Chat</a>
+<ul class="nav navbar-nav pull-left">
+  <% if logged_in? %>
+  <li class="nav-item">
+    <a class="nav-link" href="/dashboard">Dashboard</a>
+  </li>
+  <% end %>
+</ul>
+
 <ul class="nav navbar-nav pull-right">
   <% if !logged_in? %>
   <li class="nav-item">

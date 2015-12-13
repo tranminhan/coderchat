@@ -18,7 +18,14 @@
 <div class="tab-content text-left">
   <div class="tab-pane active" id="home" role="tabpanel">
       <% current_user.messages.each do |message| %>
-          <p class="lead"><%= message.body %></p>
+          <p class="lead"><%= "A new message at " %>
+            <span style="font-size: 10px"><%= "#{pretty_time(message.created_at)}" %></span>
+            <% if !message.read %>
+              <a style="font-size: 10px" href="/messages/<%= message.id %>">read...</a>
+            <% else %>
+              <span style="font-size: 10px">was read.</span>
+            <% end %>
+          </p>
       <% end %>
   </div>
   <div class="tab-pane" id="profile" role="tabpanel">
@@ -47,9 +54,3 @@
     <% end %>
   </div>
 </div>
-
-<!--   <div class="btn-group btn-group-lg" role="group" aria-label="...">Messages</div>
-  <div class="btn-group btn-group-lg" role="group" aria-label="...">New Message</div>
-  <div class="btn-group btn-group-sm" role="group" aria-label="...">Add Friends</div>
-  <div class="btn-group btn-group-xs" role="group" aria-label="...">Sent Messages</div> -->
-
