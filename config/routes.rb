@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   resources :users, only: [:new, :create, :index, :show]
   resources :sessions, only: [:new, :create]
   resource :dashboard, only: [:show]
+  resources :friendships, only: [:create]
 
   get 'homes/show'
   get 'signup' => 'users#new'
