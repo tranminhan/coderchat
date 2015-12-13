@@ -16,8 +16,13 @@ class MessagesController < ApplicationController
   end
 
   def create
-    receiver = User.find_by(username: params[:message][:receiver])
-    Message.create(receiver: receiver, body: params[:message][:body])
-    redirect_to dashboard_path
+    receiver = User.find_by(id: params[:message][:receiver])
+    # debugger
+    if !receiver
+      flash.now.error = "Receiver not found"
+    else 
+      Message.create(sender: current_user, receiver: receiver, body: params[:message][:body])
+      redirect_to dashboard_path
+    end 
   end 
 end

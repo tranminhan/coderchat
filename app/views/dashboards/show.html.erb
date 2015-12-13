@@ -33,7 +33,7 @@
       <div class="col-md-4">
         <%= form_for(Message.new) do |f| %>
           <div class="form-group">
-            <%= f.text_field :receiver, class: "form-control", placeholder: 'friend username' %>
+            <%= f.collection_select :receiver, current_user.friends, :id, :username, prompt: true, class: 'form-control' %>
           </div>
           <div class="form-group">
             <%= f.text_area :body, class: "form-control", placeholder: 'message' %>
@@ -41,37 +41,23 @@
           <%= f.submit "Send", class: "btn btn-warning" %>
         <% end %>
       </div>
-      <div class="col-md-4">
-        <h3>Your friends</h3>
-        <% current_user.friends.each do |friend| %>
-          <a><%= friend.username %></a> | 
-        <% end %>
-      </div>
     </div>
   </div>
   <div class="tab-pane" id="messages" role="tabpanel">
     <div class="row">
       <div class="col-md-4">
-        <form>
-          <fieldset class="form-group">
-            <input type="text" class="form-control" placeholder="friend name">
-          </fieldset>
-          <button type="submit" class="btn btn-primary">Add</button>
-        </form>
-      </div>
-      <div class="col-md-4">
         <h3>Your friends</h3>
         <% current_user.friends.each do |friend| %>
           <a><%= friend.username %></a> | 
         <% end %>
       </div>
       <div class="col-md-4">
-        <h3>Other users</h3>
+        <h3>People</h3>
         <% User.all.each do |u| %>
           <% if !current_user.friends.include?(u) && current_user != u %>
             <%= form_tag friendships_path, method: "post", class: 'form-inline' do %>
               <input type="hidden" name="id" value="<%= u.id %>">
-              <button type="submit" class="btn btn-link"><%= u.username %></button>
+              <button type="submit" class="btn btn-link"><%= "Friends circle << #{u.username}" %></button>
             <% end %>
           <% end %>
         <% end %>
