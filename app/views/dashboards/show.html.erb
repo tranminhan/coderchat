@@ -17,36 +17,55 @@
 <!-- Tab panes -->
 <div class="tab-content text-left">
   <div class="tab-pane active" id="home" role="tabpanel">
-      <% current_user.messages.each do |message| %>
-          <p class="lead"><%= "A new message at " %>
-            <span style="font-size: 10px"><%= "#{pretty_time(message.created_at)}" %></span>
-            <% if !message.read %>
-              <a style="font-size: 10px" href="/messages/<%= message.id %>">read...</a>
-            <% else %>
-              <span style="font-size: 10px">was read.</span>
-            <% end %>
-          </p>
-      <% end %>
+    <% current_user.messages.each do |message| %>
+      <p class="lead"><%= "A new message at " %>
+        <span style="font-size: 10px"><%= "#{pretty_time(message.created_at)}" %></span>
+        <% if !message.read %>
+          <a style="font-size: 10px" href="/messages/<%= message.id %>">read...</a>
+        <% else %>
+          <span style="font-size: 10px">was read.</span>
+        <% end %>
+      </p>
+    <% end %>
   </div>
   <div class="tab-pane" id="profile" role="tabpanel">
-    <form>
-      <fieldset class="form-group">
-        <input type="text" class="form-control" placeholder="friend name">
-      </fieldset>
-      <fieldset class="form-group">
-        <textarea class="form-control" rows="3" placeholder="message"></textarea>
-      </fieldset>
-      <button type="submit" class="btn btn-primary">Send</button>
-    </form>
-
+    <div class="row">
+      <div class="col-md-4">
+        <form>
+          <fieldset class="form-group">
+            <input type="text" class="form-control" placeholder="friend name">
+          </fieldset>
+          <fieldset class="form-group">
+            <textarea class="form-control" rows="3" placeholder="message"></textarea>
+          </fieldset>
+          <button type="submit" class="btn btn-primary">Send</button>
+        </form>
+      </div>
+      <div class="col-md-4">
+        <h3>All friends</h3>
+        <% current_user.friends do |u| %>
+          <a href="#"><%= u.username %></a>&nbsp;
+        <% end %>
+      </div>
+    </div>
   </div>
   <div class="tab-pane" id="messages" role="tabpanel">
-    <form>
-      <fieldset class="form-group">
-        <input type="text" class="form-control" placeholder="friend name">
-      </fieldset>
-      <button type="submit" class="btn btn-primary">Add</button>
-    </form>
+    <div class="row">
+      <div class="col-md-4">
+        <form>
+          <fieldset class="form-group">
+            <input type="text" class="form-control" placeholder="friend name">
+          </fieldset>
+          <button type="submit" class="btn btn-primary">Add</button>
+        </form>
+      </div>
+      <div class="col-md-4">
+        <h3>All users</h3>
+        <% User.all.each do |u| %>
+          <a href="#"><%= u.username %></a>&nbsp;
+        <% end %>
+      </div>
+    </div>
   </div>
   <div class="tab-pane" id="settings" role="tabpanel">
     <% current_user.messages.each do |message| %>
