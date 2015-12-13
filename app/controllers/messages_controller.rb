@@ -8,10 +8,9 @@ class MessagesController < ApplicationController
     elsif message.receiver != current_user
       flash.now[:error] = "The message is not for you, or you might need to log in to a different account"
     elsif message.read
-      flash.now[:warning] = "The message was read ..."
+      flash.now[:warning] = "The message was read on #{pretty_time(message.read_at)}"
     else 
-      message.read = true
-      message.save
+      message.mark_as_read
       @message = message
     end
   end
