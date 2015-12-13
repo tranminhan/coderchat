@@ -14,4 +14,10 @@ class MessagesController < ApplicationController
       @message = message
     end
   end
+
+  def create
+    receiver = User.find_by(username: params[:message][:receiver])
+    Message.create(receiver: receiver, body: params[:message][:body])
+    redirect_to dashboard_path
+  end 
 end

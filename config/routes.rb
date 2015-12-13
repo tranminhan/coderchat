@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :messages, only: [:show]
+  resources :messages, only: [:show, :create]
   resources :users, only: [:new, :create, :index, :show]
   resources :sessions, only: [:new, :create]
   resource :dashboard, only: [:show]

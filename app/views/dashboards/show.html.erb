@@ -31,15 +31,15 @@
   <div class="tab-pane" id="profile" role="tabpanel">
     <div class="row">
       <div class="col-md-4">
-        <form>
-          <fieldset class="form-group">
-            <input type="text" class="form-control" placeholder="friend name">
-          </fieldset>
-          <fieldset class="form-group">
-            <textarea class="form-control" rows="3" placeholder="message"></textarea>
-          </fieldset>
-          <button type="submit" class="btn btn-primary">Send</button>
-        </form>
+        <%= form_for(Message.new) do |f| %>
+          <div class="form-group">
+            <%= f.text_field :receiver, class: "form-control", placeholder: 'friend username' %>
+          </div>
+          <div class="form-group">
+            <%= f.text_area :body, class: "form-control", placeholder: 'message' %>
+          </div>
+          <%= f.submit "Send", class: "btn btn-warning" %>
+        <% end %>
       </div>
       <div class="col-md-4">
         <h3>Your friends</h3>
