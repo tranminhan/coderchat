@@ -66,15 +66,13 @@
         <% end %>
       </div>
       <div class="col-md-4">
-        <h3>All users</h3>
+        <h3>Other users</h3>
         <% User.all.each do |u| %>
           <% if !current_user.friends.include?(u) && current_user != u %>
-            <div class="width: auto">
-              <%= form_tag friendships_path, method: "post", class: 'form-inline' do %>
-                <input type="hidden" name="id" value="<%= u.id %>">
-                <button type="submit" class="btn btn-link"><%= u.username %></button>
-              <% end %>
-            </div>
+            <%= form_tag friendships_path, method: "post", class: 'form-inline' do %>
+              <input type="hidden" name="id" value="<%= u.id %>">
+              <button type="submit" class="btn btn-link"><%= u.username %></button>
+            <% end %>
           <% end %>
         <% end %>
       </div>
