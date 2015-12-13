@@ -9,3 +9,5 @@ me = User.create(email: 'atran@example.com', username: 'atran', password: 'passw
 5.times do |n|
   Message.create(body: Faker::Lorem.paragraph, receiver: me)
 end 
+
+hacker = User.create(email: 'hacker@example.com', username: 'hacker', password: 'password', password_confirmation: 'password')
