@@ -7,6 +7,8 @@ class MessagesController < ApplicationController
       flash.now[:error] = "Message not found"
     elsif message.receiver != current_user
       flash.now[:error] = "The message is not for you, or you might need to log in to a different account"
+    elsif message.read
+      flash.now[:warning] = "The message was read ..."
     else 
       message.read = true
       message.save
