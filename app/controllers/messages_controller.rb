@@ -21,8 +21,15 @@ class MessagesController < ApplicationController
     if !receiver
       flash.now.error = "Receiver not found"
     else 
-      Message.create(sender: current_user, receiver: receiver, body: params[:message][:body])
+      Message.create(sender: current_user, receiver: receiver, body: params[:message][:body], attachment: params[:message][:attachment])
       redirect_to dashboard_path
     end 
   end 
+
+  private 
+
+  def message_params
+    params.require(:message).permit(:receiver, :body, :attachment)
+  end
+
 end

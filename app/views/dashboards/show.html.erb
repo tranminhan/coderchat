@@ -38,6 +38,12 @@
           <div class="form-group">
             <%= f.text_area :body, class: "form-control", placeholder: 'message' %>
           </div>
+          <div class="form-group">
+            <label class="file">
+              <%= f.file_field :attachment %>
+              <span class="file-custom"></span>
+            </label>
+          </div>
           <%= f.submit "Send", class: "btn btn-warning" %>
         <% end %>
       </div>
