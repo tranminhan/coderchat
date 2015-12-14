@@ -25,7 +25,7 @@ The following **required** functionality is complete:
 
 The following **optional** functionality is complete:
 
-* [ ] User can attach an image.
+* [x] User can attach an image.
 * [ ] User can have multiple recipients on one message. 
 * [ ] User can log in with Facebook. 
 * [ ] Use of the [kaminari gem](https://github.com/amatsuda/kaminari) and [jquery-infinite-pages gem](https://github.com/magoosh/jquery-infinite-pages) to implement Infinite Scroll.
