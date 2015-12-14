@@ -18,7 +18,7 @@ gem 'bootstrap', '~> 4.0.0.alpha1'
 gem 'bcrypt'
 gem 'simple_form'
 gem 'faker'
-gem "paperclip"
+gem 'paperclip', git: 'git://github.com/thoughtbot/paperclip.git'
 
 gem 'rails_12factor', group: :production
 
