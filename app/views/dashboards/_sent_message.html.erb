@@ -1,0 +1,9 @@
+<p class="lead"><%= "A message sent at " %>
+<span style="font-size: 10px"><%= "#{pretty_time(message.created_at)}" %></span>
+<% if !message.read %>
+  <span>unread...</span>
+<% else %>
+  <span>was read at </span>
+  <span style="font-size: 10px"><%= "#{pretty_time(message.read_at)}" %></span>
+<% end %>
+</p>

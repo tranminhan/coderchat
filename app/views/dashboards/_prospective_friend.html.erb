@@ -1,0 +1,7 @@
+<div class="text-center col-md-4">
+  <%= form_tag friendships_path, method: "post", class: 'form-inline' do %>
+    <input type="hidden" name="id" value="<%= u.id %>">
+    <img src=<%= "https://robohash.org/#{u.username}.png?set=set3&size=120x120" %> class="img-rounded">
+    <button type="submit" class="btn btn-link"><%= "Add friend #{u.username}" %></button>
+  <% end %>
+</div>

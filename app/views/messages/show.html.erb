@@ -1,8 +1,5 @@
 <% if @message %>
 <div class="row">
-  <!-- <div class="col-md-3">
-    <%= image_tag @message.attachment.url(:medium), class: "img-fluid img-rounded" %>
-  </div> -->
   <div class="col-md-6" style="text-align: left">
     <h6><b><%= @message.sender.username %></b> sent you a message</h6>
     <span style="font-size: 10px"><%= " on #{pretty_time(@message.created_at)}" %></span>

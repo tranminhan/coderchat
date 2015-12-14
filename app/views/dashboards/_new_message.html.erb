@@ -1,0 +1,8 @@
+<p class="lead"><%= "A new message at " %>
+  <span style="font-size: 10px"><%= "#{pretty_time(message.created_at)}" %></span>
+  <% if !message.read %>
+    <a style="font-size: 10px" href="/messages/<%= message.id %>">read...</a>
+  <% else %>
+    <span style="font-size: 10px">was read.</span>
+  <% end %>
+</p>
