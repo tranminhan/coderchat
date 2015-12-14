@@ -44,13 +44,14 @@ The following **additional** features are implemented:
 
 Here's a walkthrough of implemented user stories:
 
-![Video Walkthrough](http://i.imgur.com/XafLJac.gif)
+![Video Walkthrough](http://i.imgur.com/k3M2HuQ.gif)
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
 ## Notes
 
-Describe any challenges encountered while building the app.
+* I evaluated mailer services like Mandrill and Sendgrid but Mandrill does not support Vietnam, and Sendgrill takes forever to provision my account.
+* Doing UI task is fun but it is also time consuming. Maybe a simple design like the coderdating app will help me spend more time to digest Rails features instead.
 
 ## License
 
