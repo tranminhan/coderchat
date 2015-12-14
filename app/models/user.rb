@@ -12,4 +12,8 @@ class User < ActiveRecord::Base
   has_many :friendships, class_name: 'Friendship', foreign_key: 'me_id', dependent: :destroy
 
   has_many :friends, through: :friendships, source: :friend
+
+  def prospective_friends 
+    User.all - self.friends - [self]
+  end 
 end

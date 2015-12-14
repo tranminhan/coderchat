@@ -62,16 +62,14 @@
       </div>
       <div class="col-md-6 people">
         <h3>People</h3>
-        <% User.all.each do |u| %>
-          <% if !current_user.friends.include?(u) && current_user != u %>
-            <div class="text-center col-md-4">
-              <%= form_tag friendships_path, method: "post", class: 'form-inline' do %>
-                <input type="hidden" name="id" value="<%= u.id %>">
-                <img src=<%= "https://robohash.org/#{u.username}.png?set=set3&size=120x120" %> class="img-rounded">
-                <button type="submit" class="btn btn-link"><%= "Add friend #{u.username}" %></button>
-              <% end %>
-            </div>
-          <% end %>
+        <% current_user.prospective_friends.each do |u| %>
+          <div class="text-center col-md-4">
+            <%= form_tag friendships_path, method: "post", class: 'form-inline' do %>
+              <input type="hidden" name="id" value="<%= u.id %>">
+              <img src=<%= "https://robohash.org/#{u.username}.png?set=set3&size=120x120" %> class="img-rounded">
+              <button type="submit" class="btn btn-link"><%= "Add friend #{u.username}" %></button>
+            <% end %>
+          </div>
         <% end %>
       </div>
     </div>
